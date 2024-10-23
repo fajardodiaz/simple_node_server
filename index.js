@@ -26,12 +26,18 @@ app.post("/posts", async (req, res) => {
 
   posts.push(newPost);
 
-  await axios.post("http://localhost:4005/events", {
+  await axios.post("http://localhost:3005/events", {
     type: "PostCreated",
     data: newPost,
   });
 
   res.status(201).json({ message: "Post created successfully", newPost });
+});
+
+app.post("/events", (req, res) => {
+  console.log("Received event", req.body.type);
+
+  res.send({});
 });
 
 app.listen(PORT, () => {
