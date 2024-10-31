@@ -1,5 +1,7 @@
 const express = require("express");
+const { randomBytes } = require("crypto");
 const cors = require("cors");
+// const axios = require("axios");
 
 const app = express();
 const PORT = 3000;
@@ -22,10 +24,6 @@ app.get("/success", (req, res) => {
   res.status(200).send({ message: "Success" });
 });
 
-app.get("/error", (req, res) => {
-  res.status(400).send({ error: "Bad Request, try again" });
-});
-
 app.get("/posts", (req, res) => {
   res.send(posts);
 });
@@ -42,6 +40,10 @@ app.post("/posts", async (req, res) => {
   posts.push(newPost);
 
   res.status(201).json({ message: "Post created successfully", newPost });
+});
+
+app.get("/error", (req, res) => {
+  res.status(400).send({ error: "Bad Request, try again" });
 });
 
 app.listen(PORT, () => {
