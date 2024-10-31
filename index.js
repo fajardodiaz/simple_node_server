@@ -21,7 +21,7 @@ const posts = [
 ];
 
 app.get("/success", (req, res) => {
-  res.status(200).send({ message: "Success" });
+  res.status(201).send({ message: "Success" });
 });
 
 app.get("/posts", (req, res) => {
