@@ -15,11 +15,11 @@ const posts = [
 
 /* GET users listing. */
 
-router.get("/posts", (req, res) => {
+router.get("/", (req, res) => {
   res.send(posts);
 });
 
-router.post("/posts", async (req, res) => {
+router.post("/", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
 
