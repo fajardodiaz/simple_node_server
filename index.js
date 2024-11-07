@@ -1,7 +1,6 @@
 const express = require("express");
 const { randomBytes } = require("crypto");
 const cors = require("cors");
-// const axios = require("axios");
 
 const app = express();
 const PORT = 3000;
@@ -21,11 +20,11 @@ const posts = [
 ];
 
 app.get("/success", (req, res) => {
-  res.status(201).send({ message: "Success" });
+  return res.status(201).send({ message: "Success" });
 });
 
 app.get("/posts", (req, res) => {
-  res.send(posts);
+  return res.send(posts);
 });
 
 app.post("/posts", async (req, res) => {
@@ -39,7 +38,7 @@ app.post("/posts", async (req, res) => {
 
   posts.push(newPost);
 
-  res.status(201).json({ message: "Post created successfully", newPost });
+  return res.status(201).json({ message: "Post created successfully", newPost });
 });
 
 app.get("/error", (req, res) => {
